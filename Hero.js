@@ -2,7 +2,7 @@ import Caracter from "./Caracter.js";
 import Utils from "./Utils.js";
 
 class Hero extends Caracter {
-  constructor(name, marbles, bonus, malus) {
+  constructor(name, marbles, malus, bonus) {
     super(name, marbles);
     this.bonus = bonus;
     this.malus = malus;

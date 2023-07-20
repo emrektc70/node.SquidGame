@@ -67,8 +67,6 @@ class Game {
     }
     // sinon c'est perdu
     else {
-      this.hero.marbles -= enemy.marbles + this.hero.malus;
-      this.listEnemies[enemyIndex].marbles += enemy.marbles; // je donne une partie de mes billes à l'ennemie
       console.log(
         "HAHAHA, c'est perdu, vous perdez " +
           enemy.marbles +
@@ -76,6 +74,8 @@ class Game {
           this.hero.malus +
           " billes !"
       );
+      this.hero.marbles -= enemy.marbles + this.hero.malus;
+      this.listEnemies[enemyIndex].marbles += enemy.marbles; // je donne une partie de mes billes à l'ennemie
       console.log(
         "Grâce à vous, votre enemie a maintenant dans ses mains " +
           this.listEnemies[enemyIndex].marbles +
@@ -130,14 +130,14 @@ class Game {
       this.nbrEncounter--;
     }
 
-    endGame();
+    this.endGame();
   }
 
   endGame() {
     if (this.hero.marbles > 0) {
       console.log("YOU WOOON");
     } else {
-      console.log("YOU WIN");
+      console.log("YOU LOOSE");
     }
   }
 
