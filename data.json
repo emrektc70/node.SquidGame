@@ -1,0 +1,126 @@
+{
+    "ListHeroes": [
+      {
+        "name": "Seong Gi-hun",
+        "marbles": 10,
+        "gain": 1,
+        "loss": 3
+      },
+      {
+        "name": "Kang Sae-byeok",
+        "marbles": 15,
+        "gain": 2,
+        "loss": 2
+      },
+      {
+        "name": "Cho Sang-woo",
+        "marbles": 20,
+        "gain": 3,
+        "loss": 1
+      }
+    ],
+    "ListEnemies": [
+      {
+        "name": "Tao Huang",
+        "marbles": 8,
+        "age": 27
+      },
+      {
+        "name": "Su He",
+        "marbles": 14,
+        "age": 35
+      },
+      {
+        "name": "Tan Ju",
+        "marbles": 12,
+        "age": 42
+      },
+      {
+        "name": "Shao Lin",
+        "marbles": 6,
+        "age": 39
+      },
+      {
+        "name": "Xing Kang",
+        "marbles": 17,
+        "age": 31
+      },
+      {
+        "name": "Jacky Chan",
+        "marbles": 11,
+        "age": 47
+      },
+      {
+        "name": "Kang Liuxian",
+        "marbles": 9,
+        "age": 80
+      },
+      {
+        "name": " Zhen Xiang ",
+        "marbles": 16,
+        "age": 79
+      },
+      {
+        "name": "Ding Bao",
+        "marbles": 5,
+        "age": 36
+      },
+      {
+        "name": "Zhong Lei",
+        "marbles": 7,
+        "age": 75
+      },
+      {
+        "name": "Xie Cai",
+        "marbles": 13,
+        "age": 40
+      },
+      {
+        "name": "Tsing Tsao",
+        "marbles": 10,
+        "age": 26
+      },
+      {
+        "name": "XÃ©non Led",
+        "marbles": 18,
+        "age": 38
+      },
+      {
+        "name": "Sushi Man",
+        "marbles": 14,
+        "age": 43
+      },
+      {
+        "name": "Chirachi",
+        "marbles": 11,
+        "age": 30
+      },
+      {
+        "name": "Changyijunquan Wuhanzhanxinya",
+        "marbles": 7,
+        "age": 32
+      },
+      {
+        "name": "Sundong Xionghuo",
+        "marbles": 16,
+        "age": 25
+      },
+      {
+        "name": "Li Tchi",
+        "marbles": 9,
+        "age": 41
+      }
+    ],
+    "ListLevels": [
+      [
+        "Easy",
+        "Medium",
+        "Impossible"
+      ],
+      [
+        4,
+        6,
+        10
+      ]
+    ]
+  }

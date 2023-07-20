@@ -15,12 +15,12 @@ class Game {
     console.log("-- création des héros");
 
     let listObjectsHero = [];
-    for (let i = 0; i < listHeroes[0].length; i++) {
+    for (let i = 0; i < listHeroes.length; i++) {
       let hero = new Hero(
-        listHeroes[0][i],
-        listHeroes[1][i],
-        listHeroes[2][i],
-        listHeroes[3][i]
+        listHeroes[i].name,
+        listHeroes[i].marbles,
+        listHeroes[i].loss,
+        listHeroes[i].gain
       );
       hero.toString();
       listObjectsHero.push(hero);
@@ -35,7 +35,7 @@ class Game {
     let listObjectsEnemy = [];
     listEnemies.forEach((enemy) => {
       let enemyCreated = new Enemy(
-        enemy,
+        enemy.name,
         Utils.generateRandomNumber(1, 20),
         Utils.generateRandomNumber(40, 90)
       );
@@ -158,9 +158,7 @@ class Game {
         "Choose a dificulty : Easy (0) - Medium (1) - Impossible (2)"
       )
     );
-    console.log(answer);
     this.nbrEncounter = this.listLevels[1][answer];
-    console.log(this.listLevels);
 
     console.log(`Vous devez survivre à ${this.nbrEncounter} rencontres !`);
   }

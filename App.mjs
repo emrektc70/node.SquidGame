@@ -6,6 +6,7 @@ import Utils from "./Utils.js";
 //
 
 let data = Utils.loadJson("./data.json");
+console.log(data);
 const game = new Game(
   data["ListHeroes"],
   data["ListEnemies"],

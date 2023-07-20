@@ -1,4 +1,5 @@
 import promptSync from "prompt-sync";
+import fs from "fs";
 
 class Utils {
   static prompt = promptSync();
@@ -11,6 +12,13 @@ class Utils {
   static userInput(msg) {
     let resp = this.prompt(msg);
     return resp;
+  }
+
+  static loadJson(pathJson) {
+    let jsonData = fs.readFileSync(pathJson);
+    let data = JSON.parse(jsonData);
+
+    return data;
   }
 }
 
