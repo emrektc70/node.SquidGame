@@ -3,15 +3,12 @@ import Hero from "./Hero.js";
 import Utils from "./Utils.js";
 
 class Game {
-  enemy;
-  enemyIndex;
-
   constructor(listHeroes, listEnemies, listLevels) {
     this.listHeroes = this.createHeroes(listHeroes);
     this.listEnemies = this.createEnemies(listEnemies);
     this.hero = new Hero();
     this.listLevels = listLevels;
-    this.nrbEncounter = 0;
+    this.nbrEncounter = 0;
   }
 
   createHeroes(listHeroes) {
@@ -51,24 +48,92 @@ class Game {
     return listObjectsEnemy;
   }
 
-  handleEncounter() {}
+  compareValues(userAnswer, enemy, enemyIndex) {
+    // si c'est pair j'ai gagné
+    // ou si c'est impair j'ai gagné
+    if (
+      (userAnswer % 2 == 0 && enemy.marbles % 2 == 0) ||
+      (userAnswer % 2 != 0 && enemy.marbles % 2 != 0)
+    ) {
+      console.log(
+        "Bravo, c'est gagné, vous remportez " +
+          enemy.marbles +
+          " billes + votre bonus de " +
+          this.hero.bonus +
+          " billes !"
+      );
+      this.hero.marbles += enemy.marbles + this.hero.bonus;
+      this.listEnemies.splice(enemyIndex, 1); // je supprime l'ennemie de ma liste d'ennemies
+    }
+    // sinon c'est perdu
+    else {
+      this.hero.marbles -= enemy.marbles + this.hero.malus;
+      this.listEnemies[enemyIndex].marbles += enemy.marbles; // je donne une partie de mes billes à l'ennemie
+      console.log(
+        "HAHAHA, c'est perdu, vous perdez " +
+          enemy.marbles +
+          " billes - votre malus de " +
+          this.hero.malus +
+          " billes !"
+      );
+      console.log(
+        "Grâce à vous, votre enemie a maintenant dans ses mains " +
+          this.listEnemies[enemyIndex].marbles +
+          " billes !"
+      );
+    }
+  }
+
+  handleEncounter(enemy, enemyIndex) {
+    let userAnswer = this.hero.chooseOddOrEven();
+    console.log("Votre enemie a dans ses mains " + enemy.marbles + " billes !");
+    this.compareValues(userAnswer, enemy, enemyIndex);
+
+    if (this.hero.marbles > 0) {
+      console.log(
+        "Après ce combat il vous reste " + this.hero.marbles + " billes !"
+      );
+    } else {
+      console.log("HAHAHAHHA, you looose !");
+    }
+  }
 
   startFights() {
-    while (this.hero.marbles > 0 && this.nrbEncounter > 0) {
-      this.handleEncounter();
+    while (this.hero.marbles > 0 && this.nbrEncounter > 0) {
+      console.log(`Rencontre n° ${this.nbrEncounter}`);
 
       // selectionner un ennemie aléatoirement
-      // regarder si il a plus de 70 ans
-      // demandeer au user si il veut tricher
-      // si il veut tricher
-      // faire gagner directement le héro
-      // sinon
-      // affronter l'ennemi
-      // sinon affronter l'ennemi
+      let enemyIndex = Utils.generateRandomNumber(0, this.listEnemies.length);
+      let enemy = this.listEnemies[enemyIndex]; // enemy à affronter
 
-      this.nrbEncounter--;
+      // regarder si il a plus de 70 ans
+      if (enemy.age > 70) {
+        // demandeer au user si il veut tricher
+        let cheat = this.hero.cheat();
+
+        if (cheat) {
+          // si il veut tricher
+          // faire gagner directement le héro
+          this.hero.marbles += enemy.marbles;
+          this.listEnemies.splice(enemyIndex); // l'ennemi est supprimé
+          this.nbrEncounter--;
+          continue;
+        } else {
+          console.log("Votre comportement est noble, bonne chance !");
+        }
+      }
+
+      // sinon
+      this.handleEncounter(enemy, enemyIndex);
+      // affronter l'ennemi
+
+      this.nbrEncounter--;
     }
 
+    endGame();
+  }
+
+  endGame() {
     if (this.hero.marbles > 0) {
       console.log("YOU WOOON");
     } else {
